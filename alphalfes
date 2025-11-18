@@ -1,5 +1,5 @@
 
-//telehöfles0.0
+//telehöfles0.1
 //420 und bier?
 //mir egal ich muss raven!!
 
@@ -9,7 +9,7 @@ s("rolandmc303_bd:2").degradeBy("rand").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1
 s("compurhythm78_perc").degradeBy("perlin").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").n(irand(8)).struct("<1 0>*7 <1 0>*16"),
 s("compurhythm78_perc ").degradeBy("rand").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").n(irand(8)).struct("<0 1>*4<1 0>*7"),
   s("super64_vib:4").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").struct("<1 0> <1 0>*2").gain(slider(0.489)).legato(2).pan(irand),
-  s("numbers").gain(irand(1.3,2.4)).delay(irand(1,2)).pan(irand(1)).n(irand(8)).struct("<1? 1?? 1?? [1??? 1?]>"), 
+  s("numbers").gain(irand(1.3,2.4)).delay(irand(2)).pan(irand(1)).n(irand(8)).struct("<1? 1?? 1?? [1??? 1?]>"), 
   n(irand(2)).s("supersaw:3").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").fm("perlin")
 )
 .color("teal")
