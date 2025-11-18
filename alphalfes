@@ -1,4 +1,5 @@
-//telehöfles0.0
+
+//telehöfles0.1
 //420 und bier?
 //mir egal ich muss raven!!
 
@@ -20,8 +21,8 @@ $:stack(
 s("bd*4,- [cp,sd]").bank("RolandTR909"),
 chord("[- g:minor] - [- g:major] -")
 .add(note("0,.31"))
-.s("supersaw").n(irand(8))
-.cutoff(perlin.range(4200,3456).slow(8))
+.s("supersaw:2").n(irand(8))
+.cutoff(perlin.range(4100,3556).slow(4))
 .decay(perlin.range(.2,.3)).sustain(0.1)
 .room(1)
 .lpq(10)
@@ -29,7 +30,7 @@ chord("[- g:minor] - [- g:major] -")
 .sz(slider(6,0,10,.5))
 .rfade(slider(0.462))
 .roomdim(slider(0.349)))
-.duck(irand(.2)).duckdepth(irand(.3)).duckattack(irand(.2))
+.duck(irand(1)).duckdepth(irand(1)).duckattack(irand(2))
 //.hush()
 
 $:stack(
@@ -39,7 +40,5 @@ $:stack(
   
 )
 $: n("<1>*16").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
-  .dec(.2).fm(irand(12)).degradeBy(0.32)
+  .dec(.2).fm(irand(12)).degradeBy(0.32).color("violet")
 ._punchcard()//.hush()
-
-
