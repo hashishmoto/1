@@ -1,5 +1,4 @@
-
-//telehöfles0.1
+//telehöfles0.0
 //420 und bier?
 //mir egal ich muss raven!!
 
@@ -29,7 +28,7 @@ chord("[- g:minor] - [- g:major] -")
 .sz(slider(6,0,10,.5))
 .rfade(slider(0.462))
 .roomdim(slider(0.349)))
-.duck(irand(1)).duckdepth(irand(1)).duckattack(irand(2))
+.duck(irand(1.3)).duckdepth(.4).duckattack(irand(1))
 //.hush()
 
 $:stack(
