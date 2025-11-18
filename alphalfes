@@ -35,3 +35,4 @@ $:stack(
   n("8 - 8 - 5").s("gm_lead_8_bass_lead").gain(.6).dec(.1).room(slider(0.439)).fm(4)
   
 )
+$: n("<0>*16").s("saw").dec(.2).fm(irand(15))._pianoroll()
