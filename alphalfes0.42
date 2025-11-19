@@ -1,30 +1,30 @@
-//telehöfles 0.42
-//4.20 bier
+                                    ///4.20‰ – Bier\\\
+                                   ///telehofles 0.42\\
 setcpm(135/4)
 const mask   = ("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
 const struk  = ("<1 0> <1 0>*2")
 const farben = ("teal lightblue teal teal [lightblue teal]")
 
 Drums$:stack(
- s("rolandmc303_bd:2").gain(perlin.range(1.5,1.7))
- .s("yamaharm50_perc").n(irand(12)).degradeBy(".33")
+ s("rolandmc303_bd").gain(perlin.range(1.5,1.7))
+ .s("rolandmc_misc").n(irand(8)).degradeBy(".33")
  .s("yamaharm50_perc").n(irand(12)).degradeBy("0.2")
  .mask(mask).struct(struk).legato(3).color(farben))
-
+ //.hush()
 Number$:s("numbers").gain(irand(1.3,2.4)).degradeBy(.4).delay(irand(2)).n(irand(8))
-.struct(struk).color(farben).mask(mask)
-
+ .struct(struk).color(farben).mask(mask).almostNever(slice(8, "0 1 <2 2*2> 3 [4 0] 5 6 7")).jux(rev).slow(0.75)
+ //.hush()
 Kick$:stack(
  s("bd*4,- [cp,sd]").bank("RolandTR909"),
- chord("[- g:minor] - [- g:major] -")
+ chord("[- g:minor] - [- g:major] -").velocity(berlin.range(.9,1.3))
  .add(note("0,.31")).s("supersaw:2").n(irand(8)).mask(mask)
- .cutoff(perlin.range(4100,3556).slow(2)).decay(perlin.range(.2,.3)).sustain(0.2).lpq(5)
- .room(slider(0.153))
+ .cutoff(perlin.range(4100,3556).slow(2)).decay(perlin.range(.1,.2)).sustain(0.2).lpq(5)
+ .room(slider(0.152))
  .sz(slider(0.5,0,10,.5))
  .rfade(slider(0.099))
  .roomdim(slider(0.122))
  .duck(2).duckattack(0.2).duckdepth(12)).color(farben)
-
+  //.hush()
 Noi$e:stack(
   s("gm_acoustic_bass")
   .mask(mask).degradeBy(0.3)
@@ -32,10 +32,11 @@ Noi$e:stack(
   n("8 - 8 - 5").s("gm_lead_8_bass_lead").mask(mask)
   .gain(3).dec(.1).hpf(perlin.range(1111,1913)).pan(perlin.range(.1,.4))
   .room(slider(0.276)))
-
+  //.hush()
 Bas$:n("<1 1?? 1 1?>*4 <1>*4 <1 1? 1?? 1>*4")
   .mask(mask).orbit(2).attack(-.4).dec(.4).sus(.3).fm(irand(2)).scrub("1 -5 2 -4 3 0 -3 4 -2 5 -1")
-  .jux(rev).degradeBy(0.32).color("lightblue").spiral({steady:(1),thickness:(3300),fade:(.1)
+  .jux(rev).degradeBy(0.32).color(farben).spiral({steady:(1),thickness:(3300),fade:(.1)
   ,size:(22),stretch:(1),padding:(1),inset:(-0.1),logSpiral:(1),playheadColor:("1"),activeColor:(1),inactiveColor:(1)})
- 
-//42! 
+  //.hush()
+
+                                      //42!\\
