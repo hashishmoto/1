@@ -5,14 +5,13 @@ setcpm(135/4)
 $:stack(
 s("rolandmc303_bd:2").gain(slider(0.371))
 .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
-.duck(irand(1.3)).duckdepth(.4).duckattack(irand(.6))
 .struct("<1 0 1? 0>*16"),
 s("yamaharm50_perc").n(irand(50)).ply(3).degradeBy(".33").n(irand(8)).struct("<1 0>*7 <1 0>*16")
 .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>"),
 s("yamaharm50_perc").n(irand(50)).degradeBy("0.2").n(irand(8)).struct("<0 1>*4<1 0>*7") 
   .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>"),s("super64_vib:4")
-  .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").struct("<1 0> <1 0>*2").legato(3).pan(irand),
-  s("numbers").gain(irand(2.3,3.4)).delay(irand(2)).pan(irand(1)).n(irand(8)).struct("<1? 1?? 1?? [1??? 1?]>"), 
+  .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").struct("<1 0> <1 0>*2").legato(3),
+  s("numbers").gain(irand(2.3,3.4)).delay(irand(2)).n(irand(8)).struct("<1? 1?? 1?? [1??? 1?]>"), 
   n(irand(2)).s("supersaw:3")).postgain(.6)
 .color("teal lightblue teal teal [lightblue teal]")
 $:stack(
@@ -27,7 +26,7 @@ chord("[- g:minor] - [- g:major] -")
 .sz(slider(0,0,10,.5))
 .rfade(slider(0.167))
 .roomdim(slider(0.21)))
-.duck(irand(1.3)).duckdepth(.6).duckattack(irand(1))
+.duck(irand(1.3)).duckdepth(.6).duckattack(irand(1).duckorbit(1))
 $:stack(
   s("gm_acoustic_bass")
   .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").degradeBy(0.3)
