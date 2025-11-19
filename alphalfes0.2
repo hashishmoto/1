@@ -1,42 +1,42 @@
-//telehöfles 0.0 (•>  
+//telehöfles 0.3
 //4.20 bier
-//mir egal ich muss raven!!----------
+const mask = ("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
+const struk = ("<1 0> <1 0>*2")
+const farben = ("teal lightblue teal teal [lightblue teal]")
 setcpm(135/4)
-$:stack(
+
+Drums$:stack(
  s("rolandmc303_bd:2").gain(slider(0.213))
- .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").struct("<1 0 1? 0>*16"),
- s("yamaharm50_perc").n(irand(12)).ply(3).degradeBy(".33").struct("<1 0>*7 <1 0>*16")
- .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>"),
- s("yamaharm50_perc").n(irand(12)).degradeBy("0.2").struct("<0 1>*4<1 0>*7") 
- .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>"),
- s("super64_vib:4")
- .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").struct("<1 0> <1 0>*2").legato(3),
- s("numbers").gain(irand(2.3,3.4)).delay(irand(2)).n(irand(8)).struct("<1? 1?? 1?? [1??? 1?]>"), 
- n(irand(2)).s("supersaw:3")).postgain(.6).orbit(2)
- .color("teal lightblue teal teal [lightblue teal]")
-$:stack(
+ .s("yamaharm50_perc").n(irand(12)).ply(3).degradeBy(".33")
+ .s("yamaharm50_perc").n(irand(12)).degradeBy("0.2")
+ .s("super64_vib:4")
+ .mask(mask).struct(struk).legato(3)).color(farben)
+
+Number$:s("numbers").gain(irand(2.3,3.4)).degradeBy(.4).delay(irand(2)).n(irand(8))
+.struct(struk).color(farben).mask(mask)
+
+Kick$:stack(
  s("bd*4,- [cp,sd]").bank("RolandTR909"),
  chord("[- g:minor] - [- g:major] -")
- .add(note("0,.31"))
- .s("supersaw:2").n(irand(8))
- .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
- .cutoff(perlin.range(4100,3556).slow(2))
- .decay(perlin.range(.2,.3)).sustain(0.2).lpq(5)
+ .add(note("0,.31")).s("supersaw:2").n(irand(8)).mask(mask)
+ .cutoff(perlin.range(4100,3556).slow(2)).decay(perlin.range(.2,.3)).sustain(0.2).lpq(5)
  .room(slider(0.153))
  .sz(slider(0.5,0,10,.5))
  .rfade(slider(0.099))
  .roomdim(slider(0.122))
- .duck(2).duckattack(0.2).duckdepth(12))
-$:stack(
+ .duck(2).duckattack(0.2).duckdepth(12)).color(farben)
+
+Noi$e:stack(
   s("gm_acoustic_bass")
-  .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").degradeBy(0.3)
+  .mask(mask).degradeBy(0.3)
   .n("<1 9 5 9 6>*4".dec(.5).hurry("<1 4 6 3>")),
-  n("8 - 8 - 5").s("gm_lead_8_bass_lead")
-  .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
-  .gain(3).dec(.1).hpf(perlin.range(1111,1913)).pan(perlin.range(.1,.4)).room(slider(0.276)))
-$: n("<1 1?? 1 1?>*4 <1>*4 <1 1? 1?? 1>*4")
-  .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").orbit(2)
-  .attack(-.4).dec(.4).sus(.3).fm(irand(2)).scrub("1 -5 2 -4 3 0 -3 4 -2 5 -1").jux(rev).degradeBy(0.32).color("lightblue")
- .spiral({steady:(1),thickness:(3300),fade:(.1),size:(22),stretch:(1),padding:(1),inset:(-0.1),logSpiral:(1)
- ,playheadColor:("1"),activeColor:(1),inactiveColor:(1)})
-//42! 
+  n("8 - 8 - 5").s("gm_lead_8_bass_lead").mask(mask)
+  .gain(3).dec(.1).hpf(perlin.range(1111,1913)).pan(perlin.range(.1,.4))
+  .room(slider(0.276)))
+Bas$:n("<1 1?? 1 1?>*4 <1>*4 <1 1? 1?? 1>*4")
+  .mask(mask).orbit(2)
+  .attack(-.4).dec(.4).sus(.3).fm(irand(2)).scrub("1 -5 2 -4 3 0 -3 4 -2 5 -1")
+  .jux(rev).degradeBy(0.32).color("lightblue").spiral({steady:(1),thickness:(3300),fade:(.1)
+  ,size:(22),stretch:(1),padding:(1),inset:(-0.1),logSpiral:(1),playheadColor:("1"),activeColor:(1),inactiveColor:(1)})
+
+ //42! 
