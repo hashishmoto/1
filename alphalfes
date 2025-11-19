@@ -4,13 +4,21 @@
 
 setcpm(135/4)
 $:stack(
-s("rolandmc303_bd:2").degradeBy(".25").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").struct("<1 0 1? 0>*16"),
-s("compurhythm78_perc").degradeBy(".35").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").n(irand(8)).struct("<1 0>*7 <1 0>*16"),
-s("compurhythm78_perc ").degradeBy(".45").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").n(irand(8)).struct("<0 1>*4<1 0>*7"),
-  s("super64_vib:4").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").struct("<1 0> <1 0>*2").gain(slider(0.489)).legato(2).pan(irand),
+s("rolandmc303_bd:2").gain(slider(0.663))
+.mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
+.duck(irand(1.3)).duckdepth(.4).duckattack(irand(1))
+.struct("<1 0 1? 0>*16"),
+s("yamaharm50_perc").n(irand(50)).degradeBy(".33").n(irand(8)).struct("<1 0>*7 <1 0>*16")
+  .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>"),
+s("yamaharm50_perc").n(irand(50)).degradeBy("0.33").n(irand(8)).struct("<0 1>*4<1 0>*7")
+  .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>"),
+  s("super64_vib:4")
+  .mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").struct("<1 0> <1 0>*2")
+  .legato(2).pan(irand),
   s("numbers").gain(irand(2.3,3.4)).delay(irand(2)).pan(irand(1)).n(irand(8)).struct("<1? 1?? 1?? [1??? 1?]>"), 
-  n(irand(2)).s("supersaw:3").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").fm("perlin")
-)
+  n(irand(2)).s("supersaw:3")
+  //.mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").fm("perlin")
+).postgain(.6)
 .color("teal")
 ._punchcard()  
 //.hush()
@@ -22,7 +30,6 @@ chord("[- g:minor] - [- g:major] -")
 .s("supersaw:2").n(irand(8))
 .cutoff(perlin.range(4100,3556).slow(4))
 .decay(perlin.range(.2,.3)).sustain(0.1)
-.room(1)
 .lpq(10)
 .room(slider(0.468))
 .sz(slider(6,0,10,.5))
@@ -32,11 +39,15 @@ chord("[- g:minor] - [- g:major] -")
 //.hush()
 
 $:stack(
-  s("gm_acoustic_bass").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").degradeBy(0.3).n("<1 9 5 9 6>*4".dec(.5).hurry("<1 4 6 3>")),
-  
-  n("8 - 8 - 5").s("gm_lead_8_bass_lead").degradeBy(0.3).mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").degradeBy(0.3).gain(.3).dec(.1).room(slider(0.202)).fm(3)
+  s("gm_acoustic_bass")
+  //.mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>").degradeBy(0.3)
+  .n("<1 9 5 9 6>*4".dec(.5).hurry("<1 4 6 3>")),
+  n("8 - 8 - 5").s("gm_lead_8_bass_lead")
+  //.mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
+  .gain(3).dec(.1).hpf(perlin.range(1111,1913)).pan(perlin.range(.1,.4)).room(slider(0.276))
   
 )
-$: n("<1>*16").mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
+$: n("<1 1?? 1 1?>*4 <1>*4 <1 1? 1?? 1>*4")
+  //.mask("<1?? 1? 1 [1? 1??]>*4, <1? 1? 1? 1?>, <1? 1?? 1? 1???>")
   .dec(.2).fm(irand(12)).degradeBy(0.32).color("violet")
 ._punchcard()//.hush()
